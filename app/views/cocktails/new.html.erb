@@ -1,10 +1,17 @@
-<div class="container-creation mx-auto" style="width: 400px">
-  <h1>New Cocktail</h1>
-  <br>
-  <%= simple_form_for @cocktail do |f| %>
-    <%= f.input :name %>
-    <%= f.input :photo %>
-    <%= f.button :submit %>
-  <% end %>
-  <br>
+<div class="container">
+  <div class="card shadow p-3 mb-3 mt-4 bg-white rounded" style="height: auto; width: 100%;">
+    <img src="https://cdn.pixabay.com/photo/2018/03/03/03/22/alcohol-3194824_960_720.jpg" class="card-img-top" alt="..." style="height:55%; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title">What's the name of the new cocktail?</h5>
+      <p class="card-text">
+        <%= simple_form_for @cocktail do |f| %>
+          <%= f.input :name %>
+          <%= f.button :submit, class: "btn btn-dark mt-3" %>
+        <% end %>
+      </p>
+      <button class="btn btn-dark"><%= link_to "Go back to cocktails", cocktails_path, class: "text-white" %></button>
+    </div>
+
+  </div>
+
 </div>

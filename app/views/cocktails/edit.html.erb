@@ -1,0 +1,42 @@
+<div class="container">
+  <img src="<%= @pic %>" style="float:right; height: 200px; width:200px; margin-bottom: 10px;">
+  <h1 class="mt-5 mb-3 display-3"><%= @cocktail.name %></h1>
+  <table class="table table-striped">
+    <tbody>
+      <thead class="thead-dark">
+        <th>Ingredient</th>
+        <th>Amount</th>
+        <th>Delete</th>
+      </thead>
+
+      <% @cocktail.doses.each do |item| %>
+        <tr>
+          <td><%= item.ingredient.name %></td>
+          <td><%= item.description %></td>
+          <td>Delete</td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Add a new ingredient
+  </button>
+  <div class="card shadow p-3 mb-3 bg-white rounded collapse" id="collapseExample" style="width: 100%;">
+  <img src="http://www.executivestyle.com.au/content/dam/images/h/1/5/e/0/d/image.related.articleLeadwide.620x349.h15e3z.png/1537236920834.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Add an ingredient</h5>
+      <p class="card-text">
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <%= f.input :description%>
+          <%= f.association :ingredient %>
+          <%= f.button :submit, class: "btn btn-danger mt-3" %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+
+
+  <button class="btn btn-dark mt-3 mb-3"><%= link_to "Go back to cocktails", cocktails_path, class: "text-white" %></button>
+
+</div>
