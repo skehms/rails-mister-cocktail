@@ -4,15 +4,29 @@
       <h1>Your Cocktail choice</h1>
       <h2><%= @cocktail.name %></h2>
       <%= image_tag @cocktail.photo, height: 300, crop: :fill, class: "rounded-lg m-3"%>
+
       <div class="row">
-        <% @cocktail.doses.each do |dose| %>
-        <div class="col-6">
-          <%= dose.description %>
-          <p><%= dose.ingredient.name %></p>
-          <%= link_to "Destroy Dose", dose_path(dose), method: :delete, data: {confirm: 'are you sure?'}, class: "btn btn-danger" %>
-        </div>
-        <% end %>
+        <div class="col-sm-12 col-md-6">
+          <h4>Recipe</h4>
+          <table class="table table-bordered">
+            <tbody>
+              <thead>
+                <th>Ingredient</th>
+                <th>Description</th>
+                <th>Action</th>
+              </thead>
+              <% @cocktail.doses.each do |dose| %>
+              <tr>
+                <td><%= dose.description %></td>
+                <td><p><%= dose.ingredient.name %></p></td>
+                <td><%= link_to "Destroy Dose", dose_path(dose), method: :delete, data: {confirm: 'are you sure?'}, class: "btn btn-danger" %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
       </div>
+      <div class="col-sm-12 col-md-6">
       <%= link_to cocktails_path do  %>
       <i class="fas fa-long-arrow-alt-left" style="font-size: 40px;"></i>
       <% end %>
