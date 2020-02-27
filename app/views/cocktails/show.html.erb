@@ -1,3 +1,13 @@
-<div class="container">
-  <h2>Cocktail</h2>
-</div>
+<h1>Your Cocktail choice</h1>
+<%= @cocktail.name %>
+ <%= image_tag @cocktail.photo, height: 300, crop: :fill %>
+  <% @cocktail.doses.each do |dose| %>
+    <%= dose.description %>
+    <%= dose.ingredient.name %>
+    <% end %>
+     <%= link_to "Add Dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
+     <%= link_to "Destroy Dose", dose_path(@cocktail), method: :delete, data: {confirm: 'are you sure?'}, class: "btn btn-danger" %>
+<br>
+
+
+<%= link_to "Back Home", cocktails_path, class: "btn btn-primary"  %>

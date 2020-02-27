@@ -1,3 +1,21 @@
-<div class="container">
-  <h2>Cocktails</h2>
+<div class="container" style="margin-top: 30px">
+
+  <div class="row d-flex justify-content-between">
+
+    <% @cocktails.each do |cocktail|  %>
+      <% if cocktail.photo %>
+      <div class="col-4">
+        <div class="card-product">
+          <img src="<%= cocktail.photo %>" style="width:400px">
+          <div class="card-product-infos">
+            <%= link_to cocktail_path(cocktail) do  %>
+            <h2><%= cocktail.name %></h2>
+            <% end %>
+            <p>Product description with <strong>relevant info</strong> only.</p>
+          </div>
+        </div>
+      </div>
+     <% end %>
+    <% end %>
+  </div>
 </div>
