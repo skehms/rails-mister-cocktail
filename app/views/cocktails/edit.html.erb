@@ -1,13 +1,19 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card shadow rounded" style="border-radius:20px;">
   <% if @cocktail.photo.attached? %>
+    <div class="card-img img-fluid" style="border-radius:20px;">
     <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
   <% else %>
-    <img src="<%= @pic %>" style="float:right; height: 200px; width:200px; margin-bottom: 10px;">
+    <img src="<%= @pic %>" style="float:right; max-height: 100vh; width: auto;">
   <% end %>
+  <div class="card-img-overlay text-white">
   <h1 class="mt-5 mb-3 display-3"><%= @cocktail.name %></h1>
-  <table class="table table-striped">
+<div class="card-body">
+  <table class="table table-hover">
     <tbody>
-      <thead class="thead-dark">
+      <thead class="thead text-white">
         <th>Ingredient</th>
         <th>Amount</th>
         <th>Delete</th>
@@ -25,6 +31,7 @@
         <% end %>
     </tbody>
   </table>
+  </div>
   <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Add a new ingredient
   </button>
@@ -41,9 +48,10 @@
       </p>
     </div>
   </div>
-
-
-
-  <button class="btn btn-dark mt-3 mb-3"><%= link_to "Go back to cocktails", cocktails_path, class: "text-white" %></button>
-
+<button class="btn btn-dark mt-3 mb-3"><%= link_to "Go back to cocktails", cocktails_path, class: "text-white" %></button>
+</div>
+</div>
+</div>
+  </div>
+  </div>
 </div>
