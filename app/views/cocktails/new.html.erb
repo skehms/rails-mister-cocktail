@@ -6,6 +6,7 @@
       <p class="card-text">
         <%= simple_form_for @cocktail do |f| %>
           <%= f.input :name %>
+          <%= f.input :photo %>
           <%= f.button :submit, class: "btn btn-dark mt-3" %>
         <% end %>
       </p>

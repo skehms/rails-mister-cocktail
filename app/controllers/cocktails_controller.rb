@@ -5,6 +5,8 @@ class CocktailsController < ApplicationController
     @cocktails = Cocktail.all
   end
 
+
+
   def destroy
     @cocktail = Cocktail.find(params[:id])
     @cocktail.destroy
@@ -47,6 +49,13 @@ class CocktailsController < ApplicationController
     source = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
     loaded = open(source + @name).read
     @data = JSON.parse(loaded)
-    @pic = @data['drinks'][0]['strDrinkThumb']
+    if @data['drinks']
+      first_pic = @data['drinks'][0]
+      if first_pic
+        @pic = @data['drinks'][0]['strDrinkThumb']
+      end
+      else
+        @pic = 'https://static.vinepair.com/wp-content/uploads/2017/11/sidecar-inside.jpg'
+    end
   end
 end
