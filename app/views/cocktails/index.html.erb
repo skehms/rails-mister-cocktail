@@ -1,16 +1,18 @@
-<div class="jumbotron" style="max-height: 75vh; background: linear-gradient(180deg,#0003,#00000080 70%), url('https://images.unsplash.com/photo-1581705168693-3b739922afa5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80')">
+<div class="jumbotron" style="max-height: 75vh; background: linear-gradient(180deg,#0003,#00000080 70%), url('https://d22ir9aoo7cbf6.cloudfront.net/wp-content/uploads/sites/4/2019/07/Spice-Night-Bar-Ubud-Bali-Indonesia-1.jpg')">
   <h1 class="display-4 text-white">Cocktails</h1>
   <p class="lead" style="color: white">All you need is a cocktail per day!</p>
   <div class="my-4">
     <button class="btn btn-primary btn-lg text-white" >
-      <%= link_to "Add new cocktail", new_cocktail_path %>
-      </button>
+      <%= link_to "Add new cocktail", new_cocktail_path, {:style => 'color: #FFFFFF'} %>
     </div>
 
     <div class="container shadow p-3 mb-5 bg-white rounded">
       <% @cocktails.each do |cocktail| %>
       <% if cocktail == @cocktails.last %>
-      <li class="mb-3 text-uppercase p-2" style="list-style:none"><i class="fas fa-cocktail mr-2"></i><span class="badge badge-primary ml-2 mr-2">New</span><%= cocktail.name %>
+      <li class="mb-3 text-uppercase p-2" style="list-style:none">
+        <i class="fas fa-cocktail mr-2"></i>
+        <span class="badge badge-primary ml-2 mr-2">New</span>
+        <%= link_to (cocktail.name), edit_cocktail_path(cocktail) %>
         <%= link_to "Edit", edit_cocktail_path(cocktail) %>
         <%= link_to "Delete", cocktail_path(cocktail), method: :delete, :class => "text-danger" %>
       </li>
